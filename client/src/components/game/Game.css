@@ -1,0 +1,47 @@
+.Game {
+  position: absolute; /* 부모의 상대 위치에 절대 위치 */
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 70%;
+  max-width: 600px; /* 최대 너비 설정 */
+  max-height: 400px; /* 최대 높이 설정 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+#logo {
+  width: 50px;
+  height: 50px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.App .App-button {
+  margin-right: 15px;
+  margin-left: 15px;
+  margin-bottom: 15px;
+}
+
+h2 {
+  text-align: center;
+}
+
+.Button-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+#board {
+  display: flex;
+  justify-content: space-evenly;
+}

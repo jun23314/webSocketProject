@@ -1,0 +1,8 @@
+.Board {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.074);
+  border-radius: 0.7rem;
+  width: 8rem;
+}
