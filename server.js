@@ -12,17 +12,26 @@ app.get('/', (req, res) => {
 });
 
 io.on('connection', (socket) => {
-  console.log('a user connected');
-
-  socket.on('chat message', (msg) => { // 사용자가 메시지를 보냈다면
-    io.emit('chat message', msg); //전송
-    console.log(msg);
+  socket.on("join_room", (data) => {
+    socket.join(data.room);
+    console.log(`${data.username}유저가 ${data.room}번 방에 입장했습니다`);
+    let noti = {
+      message:`${data.username} 유저가 방에 입장했습니다`,
+      author:'알림'
+    }
+    socket.to(data.room).emit('receive_message', noti);
   });
+
+  socket.on("chat message", (data) => {
+    console.log('chat message', data);
+    socket.to(data.room).emit("receive_message", data);
+  });
+
   socket.on('disconnect', () => { // 연결이 끊긴 경우
-    console.log('user disconnected');
+    console.log(`${socket.id}가 접속을 끊었습니다`);
   });
 });
 
-server.listen(3000, () => {
-  console.log('server running at http://localhost:3000');
+server.listen(4000, () => {
+  console.log('server running at http://localhost:4000');
 });
