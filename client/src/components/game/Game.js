@@ -11,7 +11,7 @@ import { faDice } from "@fortawesome/free-solid-svg-icons";
 }*/
 async function fetchRandomNumber() {
   try{
-    const response = await fetch('/api'); // 서버에서 랜덤 숫자를 가져옴
+    const response = await fetch('http://localhost:3001/api'); // 서버에서 랜덤 숫자를 가져옴
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
@@ -27,7 +27,7 @@ async function fetchRandomNumber() {
 
 async function postWinner(winner) {
   try{
-    const response = await fetch('/winner', {
+    const response = await fetch('http://localhost:3001/winner', {
       method: 'POST', // POST 메소드 사용
       headers: {
         'Content-Type': 'application/json', // JSON 형식으로 전송
@@ -48,7 +48,6 @@ async function postWinner(winner) {
 function Game() {
   const [myHistory, setMyHistory] = useState([]);
   const [otherHistory, setOtherHistory] = useState([]);
-  console.log("아니 로그가 하나도 안찍히는게 말이돼???");
 
   const handleRollClick = async () => {
     const nextNum = await fetchRandomNumber();
@@ -57,6 +56,7 @@ function Game() {
     console.log(nextOtherNum);
     setMyHistory([...myHistory, nextNum]);
     setOtherHistory([...otherHistory, nextOtherNum]);
+
 
     if (nextNum > nextOtherNum) {
       await postWinner("나"); // 나의 숫자가 더 크면 승자 전송
