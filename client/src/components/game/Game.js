@@ -75,17 +75,17 @@ function Game() {
   return (
     <div className="App">
       <div className="Button-container">
-        <Button className="App-button" color="blue" onClick={handleRollClick}>
+        <Button className="App-button" color="white" onClick={handleRollClick}>
           던지기
         </Button>
-        <Button className="App-button" color="red" onClick={handleClearClick}>
-          처음부터
+        <Button className="App-button" color="white" onClick={handleClearClick}>
+          리셋
         </Button>
       </div>
 
       <div id="board">
-        <Board name="나" color="blue" gameHistory={myHistory} />
-        <Board name="상대방" color="red" gameHistory={otherHistory} />
+        <Board name="나" color="white" gameHistory={myHistory} />
+        <Board name="상대" color="white" gameHistory={otherHistory} />
       </div>
     </div>
   );
