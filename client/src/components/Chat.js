@@ -107,9 +107,9 @@ function Chat({ socket, username, room }) {
             event.key === 'Enter' && sendMessage();
           }}
         />
-        <button onClick={sendDiceGameMessage}>
+        <DiceGameButton onClick={sendDiceGameMessage}>
           <img src={logo} alt="Logo" style={{ maxWidth: '100%', maxHeight: '100%' }} />
-        </button>
+        </DiceGameButton>
         <ChatButton onClick={sendTextMessage}>
           <img src={send} alt="Send" style={{ maxWidth: '100%', maxHeight: '100%' }} />
         </ChatButton>
@@ -144,7 +144,7 @@ const RoomContainer = styled.div`
 const RoomHeader = styled.div`
   height: 40px;
   border-radius: 6px 6px 0 0;
-  background: #355463;
+  background: #000000;
   position: relative;
 `;
 
@@ -159,7 +159,7 @@ const RoomTitle = styled.p`
 
 const RoomBody = styled.div`
   height: 360px;
-  border: 1px solid #355463;
+  border: 2px solid #000000;
   background: #fff;
   position: relative;
 `;
@@ -174,7 +174,7 @@ const MessageBox = styled.div`
 
 const ChatInputBox = styled.div`
   height: 40px;
-  border: 1px solid #355463;
+  border: 2px solid #000000;
   border-top: none;
   display: flex;
   border-radius: 0 0 6px 6px;
@@ -186,7 +186,7 @@ const ChatInput = styled.input`
   border: 0;
   padding: 0 0.7em;
   font-size: 1em;
-  border-right: 1px dotted #355463;
+  border-right: 2px dotted #000000;
   outline: none;
   background: transparent;
 `;

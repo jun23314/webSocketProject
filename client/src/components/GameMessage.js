@@ -38,6 +38,7 @@ const MessageBody = styled.div`
   min-height: 40px;
   max-width: 550px;
   border-radius: 5px;
+  border: 2px solid #000000;
   color: white;
   display: flex;
   align-items: center;

@@ -67,7 +67,7 @@ const ChatContainer = styled.form`
   display: flex;
   flex-direction: column;
   text-align: center;
-  border: 1px solid steelblue;
+  border: 2px solid #000000;
   border-radius: 6px;
   padding: 10px;
   width: 300px;
@@ -80,7 +80,7 @@ const ChatTitle = styled.h3`
 const ChatInput = styled.input`
   height: 35px;
   margin: 7px;
-  border: 2px solid steelblue;
+  border: 2px solid #000000;
   border-radius: 5px;
   padding: 5px 10px;
   font-size: 16px;

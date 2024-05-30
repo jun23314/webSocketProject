@@ -35,6 +35,7 @@ const MessageBody = styled.div`
   min-height: 40px;
   max-width: 550px;
   border-radius: 5px;
+  border: 2px solid #000000;
   color: white;
   display: flex;
   align-items: center;
@@ -43,7 +44,7 @@ const MessageBody = styled.div`
   overflow-wrap: break-word;
   word-break: break-all;
   justify-content: ${({ who }) => (who === 'me' ? 'flex-end' : 'flex-start')};
-  background-color: ${({ who }) => (who === 'me' ? '#598da7' : '#2d617b')};
+  background-color: ${({ who }) => (who === 'me' ? '#FFFFFF' : '#000000')};
 `;
 
 const MessageText = styled.p`
