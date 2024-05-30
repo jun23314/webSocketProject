@@ -115,11 +115,9 @@ function Chat({ socket, username, room }) {
       {showModal && (
         
           <ModalContent>
-      
             <Game/>
-            <button onClick={closeModal}>닫기</button>
+            <CloseButton onClick={closeModal}>닫기</CloseButton>
           </ModalContent>
-         
         
       )}
 
@@ -232,4 +230,18 @@ const DiceGameButton = styled.button`
     font-size: 0.5rem;
   }
 `;
+const CloseButton = styled.button`
+  background-color: white;
+  color: black;
+  border: 2px solid black;
+  border-radius: 12px; /* 모서리를 둥글게 */
+  padding: 10px 20px;
+  cursor: pointer;
+  position: absolute;
+  top: 10px; /* 부모 컴포넌트의 상단에 위치 */
+  right: 10px; /* 부모 컴포넌트의 오른쪽에 위치 */
 
+  &:hover {
+    background-color: lightgray; /* 호버 효과 (선택 사항) */
+  }
+`;
