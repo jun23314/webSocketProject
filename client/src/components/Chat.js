@@ -7,6 +7,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { ModalContent } from './Modal';
 import Game from './game/Game';
 import logo from "./game/assets/logo.svg";
+import send from "./game/assets/send.svg";
 
 function Chat({ socket, username, room }) {
   const inputRef = useRef();
@@ -71,6 +72,7 @@ function Chat({ socket, username, room }) {
       <RoomBody>
         <MessageBox>
           {messageList.map((messageContent) => {
+
             if (messageContent.type === 'diceGame') {
               return (
                 <GameMessage
@@ -78,9 +80,9 @@ function Chat({ socket, username, room }) {
                   username={username}
                   onJoinClick={openModal}
                   key={uuidv4()}
-                />
-              
+                /> 
               );
+              
             } else {
               return (
                 <Message
@@ -108,7 +110,9 @@ function Chat({ socket, username, room }) {
         <button onClick={sendDiceGameMessage}>
           <img src={logo} alt="Logo" style={{ maxWidth: '100%', maxHeight: '100%' }} />
         </button>
-        <ChatButton onClick={sendTextMessage}>▹</ChatButton>
+        <ChatButton onClick={sendTextMessage}>
+          <img src={send} alt="Send" style={{ maxWidth: '100%', maxHeight: '100%' }} />
+        </ChatButton>
     
       </ChatInputBox>
 

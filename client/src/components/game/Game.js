@@ -2,8 +2,6 @@ import { useState } from "react";
 import Board from "./Board";
 import Button from "./Button";
 import "./Game.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faDice } from "@fortawesome/free-solid-svg-icons";
 
 
 /*function random(n) {
@@ -57,7 +55,6 @@ function Game() {
     setMyHistory([...myHistory, nextNum]);
     setOtherHistory([...otherHistory, nextOtherNum]);
 
-
     if (nextNum > nextOtherNum) {
       await postWinner("나"); // 나의 숫자가 더 크면 승자 전송
     } else if (nextNum < nextOtherNum) {
@@ -84,8 +81,8 @@ function Game() {
       </div>
 
       <div id="board">
-        <Board name="나" color="white" gameHistory={myHistory} />
-        <Board name="상대" color="white" gameHistory={otherHistory} />
+        <Board name="나" color="white" mygameHistory={myHistory} othergameHistory={otherHistory} />
+        <Board name="상대" color="white" mygameHistory={otherHistory} othergameHistory={myHistory} />
       </div>
     </div>
   );
