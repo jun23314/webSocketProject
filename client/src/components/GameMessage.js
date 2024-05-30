@@ -15,7 +15,7 @@ export const GameMessage = (props) => {
     <MessageContainer who={who}>
       <div>
         <MessageBody who={who}>
-          <MessageText>{"같이 주사위 게임 해요"}</MessageText>
+          <MessageText who={who}>{"같이 주사위 게임 해요"}</MessageText>
           <button onClick={onJoinClick}>참여하기</button>
         </MessageBody>
         <MessageSub who={who}>
@@ -47,11 +47,12 @@ const MessageBody = styled.div`
   overflow-wrap: break-word;
   word-break: break-all;
   justify-content: ${({ who }) => (who === 'me' ? 'flex-end' : 'flex-start')};
-  background-color: ${({ who }) => (who === 'me' ? '#598da7' : '#2d617b')};
+  background-color: ${({ who }) => (who === 'me' ? '#FFFFFF' : '#000000')};
 `;
 
 const MessageText = styled.p`
-  margin: 5px;
+  margin: 0 5px;
+  color: ${({ who }) => (who === 'me' ? '#000000' : '#FFFFFF')};
 `;
 
 const MessageSub = styled.div`

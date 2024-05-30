@@ -43,7 +43,7 @@ function App() {
             }}
           />
           <ErrorMessage>{errorMsg}</ErrorMessage>
-          <ChatButton onClick={joinRoom}>입장</ChatButton>
+          <ChatButton onClick={joinRoom}>JOIN</ChatButton>
         </ChatContainer>
       ) : (
         <Chat socket={socket} username={username} room={room} />
@@ -75,7 +75,7 @@ const ChatContainer = styled.form`
 const ChatTitle = styled.h3`
   font-size: 25px;
   margin-bottom: 1rem;
-  color: steelblue;
+  color: #000000;
 `;
 const ChatInput = styled.input`
   height: 35px;
@@ -93,14 +93,14 @@ const ErrorMessage = styled.p`
 `;
 
 const ChatButton = styled.button`
-  width: 200px;
+  width: 120px;
   height: 50px;
   margin: 10px auto;
   border: none;
-  border-radius: 5px;
+  border-radius: 20px;
   padding: 5px;
   font-size: 16px;
-  background: steelblue;
+  background: #000000;
   color: #fff;
   cursor: pointer;
   transition: all 0.5s;

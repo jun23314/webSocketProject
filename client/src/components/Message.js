@@ -13,7 +13,7 @@ export const Message = (props) => {
     <MessageContainer who={who}>
       <div>
         <MessageBody who={who}>
-          <MessageText>{messageContent.message}</MessageText>
+          <MessageText who={who}>{messageContent.message}</MessageText>
         </MessageBody>
         <MessageSub who={who}>
           <Time>{messageContent.time}</Time>
@@ -33,14 +33,14 @@ const MessageContainer = styled.div`
 
 const MessageBody = styled.div`
   min-height: 40px;
-  max-width: 550px;
+  max-width: 100px;
   border-radius: 5px;
   border: 2px solid #000000;
   color: white;
   display: flex;
   align-items: center;
   margin: 0 3px;
-  padding: 2px 5px;
+  padding: 2 5px;
   overflow-wrap: break-word;
   word-break: break-all;
   justify-content: ${({ who }) => (who === 'me' ? 'flex-end' : 'flex-start')};
@@ -48,7 +48,8 @@ const MessageBody = styled.div`
 `;
 
 const MessageText = styled.p`
-  margin: 5px;
+  margin: 0 5px;
+  color: ${({ who }) => (who === 'me' ? '#000000' : '#FFFFFF')};
 `;
 
 const MessageSub = styled.div`
