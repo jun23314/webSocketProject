@@ -142,7 +142,7 @@ const RoomContainer = styled.div`
 `;
 
 const RoomHeader = styled.div`
-  height: 40px;
+  height: 50px;
   border-radius: 6px 6px 0 0;
   background: #000000;
   position: relative;

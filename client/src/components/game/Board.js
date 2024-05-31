@@ -16,7 +16,7 @@ function Board({ name, color, mygameHistory, othergameHistory}) {
   else result="draw"
 
   const nameStyle = {
-    fontSize: '15px', // 원하는 글자 크기로 변경
+    fontSize: '15px', 
   };
 
   return (

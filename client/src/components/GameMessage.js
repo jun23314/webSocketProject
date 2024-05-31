@@ -13,6 +13,31 @@ export const GameMessage = (props) => {
 
   return (
     <MessageContainer who={who}>
+        {who === 'me' ? (
+          <>
+      <div>
+
+      <ChatBody who={who}>
+
+      
+            <MessageSub who={who}>
+              <Time>{messageContent.time}</Time>
+            </MessageSub>
+
+            <MessageBody who={who}>
+              <MessageText who={who}>같이 주사위 게임 해요</MessageText>
+              <JoinBody who={who}>
+                <JoinText who={who} onClick={onJoinClick}>GO</JoinText>
+              </JoinBody>
+            </MessageBody>
+       
+      
+      </ChatBody>
+
+      </div>
+      </>
+      ) : (
+        <>
       <div>
 
       <MessageSub who={who}>
@@ -21,45 +46,31 @@ export const GameMessage = (props) => {
 
       <ChatBody who={who}>
 
-        {who === 'me' ? (
-          <>
-            <MessageSub who={who}>
-              <Time>{messageContent.time}</Time>
-            </MessageSub>
+        <MessageBody who={who}>
+          <MessageText who={who}>같이 주사위 게임 해요</MessageText>
+           <JoinBody who={who}>
+            <JoinText who={who} onClick={onJoinClick}>GO</JoinText>
+           </JoinBody>
+        </MessageBody>
+          
+        <MessageSub who={who}>
+           <Time>{messageContent.time}</Time>
+        </MessageSub>
 
-            <MessageBody who={who}>
-              <MessageText who={who}>같이 주사위 게임 해요</MessageText>
-              <JoinBody who={who}>
-                <JoinText who={who} onClick={onJoinClick}>GO</JoinText>
-              </JoinBody>
-            </MessageBody>
-          </>
-        ) : (
-          <>
-            <MessageBody who={who}>
-              <MessageText who={who}>같이 주사위 게임 해요</MessageText>
-              <JoinBody who={who}>
-                <JoinText who={who} onClick={onJoinClick}>GO</JoinText>
-              </JoinBody>
-            </MessageBody>
-            
-            <MessageSub who={who}>
-              <Time>{messageContent.time}</Time>
-            </MessageSub>
-          </>
-        )}
       </ChatBody>
 
       </div>
-
+      </>
+    )}
     </MessageContainer>
+    
   );
 };
 
 const MessageContainer = styled.div`
   display: flex;
   justify-content: ${({ who }) => (who === 'me' ? 'flex-end' : 'flex-start')};
-  padding: 0 10px;
+  padding: 10px;
   box-sizing: border-box;
 `;
 
@@ -101,7 +112,7 @@ const JoinBody = styled.div`
   display: flex;
   align-items: center;
   margin: 0 1px;
-  padding: 2px 3px;
+  padding: 0 3px;
   overflow-wrap: break-word;
   word-break: break-all;
   justify-content: ${({ who }) => (who === 'me' ? 'flex-end' : 'flex-start')};
@@ -123,12 +134,11 @@ const MessageSub = styled.div`
 `;
 
 const Time = styled.p`
-  margin: ${({ who }) => (who === 'me' ? '12px 0 0 10px' : '0 10px 12px 0')};
-  
+  margin: ${({ who }) => (who === 'me' ? '12px 0 0 10px' : '12px 10px 0 0')};
 `;
 
 const Author = styled.p`
   margin-top: 5px;
-  margin-left: 5px;
+  margin-left: 0;
   font-weight: bold;
 `;

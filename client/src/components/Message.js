@@ -64,7 +64,7 @@ export const Message = (props) => {
 const MessageContainer = styled.div`
   display: flex;
   justify-content: ${({ who }) => (who === 'me' ? 'flex-end' : 'flex-start')};
-  padding: 0 10px;
+  padding: 10px;
   box-sizing: border-box;
 `;
 
@@ -111,6 +111,6 @@ const Time = styled.p`
 
 const Author = styled.p`
   margin-top: 5px;
-  margin-left: 5px;
+  margin-left: 0;
   font-weight: bold;
 `;
