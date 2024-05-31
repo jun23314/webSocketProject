@@ -11,15 +11,39 @@ export const Message = (props) => {
 
   return (
     <MessageContainer who={who}>
+
       <div>
-        <MessageBody who={who}>
-          <MessageText who={who}>{messageContent.message}</MessageText>
-        </MessageBody>
-        <MessageSub who={who}>
-          <Time>{messageContent.time}</Time>
-          <Author>{messageContent.author}</Author>
-        </MessageSub>
+
+      <MessageSub who={who}>
+        <Author who={who}>{messageContent.author}</Author>
+      </MessageSub>
+    
+      <ChatBody who={who}>
+        {who === 'me' ? (
+            <>
+          <MessageSub who={who}>
+            <Time>{messageContent.time}</Time>
+          </MessageSub>
+      
+          <MessageBody who={who}>
+            <MessageText who={who}>{messageContent.message}</MessageText>
+          </MessageBody>
+          </>
+        ) : (
+          <>
+          <MessageBody who={who}>
+            <MessageText who={who}>{messageContent.message}</MessageText>
+          </MessageBody>
+
+          <MessageSub who={who}>
+            <Time>{messageContent.time}</Time>
+          </MessageSub>
+        </>
+        )}
+      </ChatBody>
+
       </div>
+
     </MessageContainer>
   );
 };
@@ -33,7 +57,7 @@ const MessageContainer = styled.div`
 
 const MessageBody = styled.div`
   min-height: 40px;
-  max-width: 220px;
+  max-width: 550px;
   border-radius: 5px;
   border: 2px solid #000000;
   color: white;
@@ -45,6 +69,14 @@ const MessageBody = styled.div`
   word-break: break-all;
   justify-content: ${({ who }) => (who === 'me' ? 'flex-end' : 'flex-start')};
   background-color: ${({ who }) => (who === 'me' ? '#FFFFFF' : '#000000')};
+`;
+
+const ChatBody = styled.div`
+  min-height: 40px;
+  max-width: 550px;
+  display: flex;
+  align-items: center;
+  justify-content: ${({ who }) => (who === 'me' ? 'flex-end' : 'flex-start')};
 `;
 
 const MessageText = styled.p`
@@ -61,8 +93,7 @@ const MessageSub = styled.div`
 `;
 
 const Time = styled.p`
-  margin-top: 5px;
-  margin-right: 5px;
+  margin: ${({ who }) => (who === 'me' ? '12px 0 0 10px' : '0 10px 12px 0')};
 `;
 
 const Author = styled.p`

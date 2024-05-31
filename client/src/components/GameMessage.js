@@ -14,15 +14,44 @@ export const GameMessage = (props) => {
   return (
     <MessageContainer who={who}>
       <div>
-        <MessageBody who={who}>
-          <MessageText who={who}>{"같이 주사위 게임 해요"}</MessageText>
-          <button onClick={onJoinClick}>참여하기</button>
-        </MessageBody>
-        <MessageSub who={who}>
-          <Time>{messageContent.time}</Time>
-          <Author>{messageContent.author}</Author>
-        </MessageSub>
+
+      <MessageSub who={who}>
+      <Author>{messageContent.author}</Author>
+      </MessageSub>
+
+      <ChatBody who={who}>
+
+        {who === 'me' ? (
+          <>
+            <MessageSub who={who}>
+              <Time>{messageContent.time}</Time>
+            </MessageSub>
+
+            <MessageBody who={who}>
+              <MessageText who={who}>같이 주사위 게임 해요</MessageText>
+              <JoinBody who={who}>
+                <JoinText who={who} onClick={onJoinClick}>GO</JoinText>
+              </JoinBody>
+            </MessageBody>
+          </>
+        ) : (
+          <>
+            <MessageBody who={who}>
+              <MessageText who={who}>같이 주사위 게임 해요</MessageText>
+              <JoinBody who={who}>
+                <JoinText who={who} onClick={onJoinClick}>GO</JoinText>
+              </JoinBody>
+            </MessageBody>
+            
+            <MessageSub who={who}>
+              <Time>{messageContent.time}</Time>
+            </MessageSub>
+          </>
+        )}
+      </ChatBody>
+
       </div>
+
     </MessageContainer>
   );
 };
@@ -50,9 +79,39 @@ const MessageBody = styled.div`
   background-color: ${({ who }) => (who === 'me' ? '#FFFFFF' : '#000000')};
 `;
 
+const ChatBody = styled.div`
+  min-height: 40px;
+  max-width: 550px;
+  display: flex;
+  align-items: center;
+  justify-content: ${({ who }) => (who === 'me' ? 'flex-end' : 'flex-start')};
+`;
+
 const MessageText = styled.p`
   margin: 0 5px;
   color: ${({ who }) => (who === 'me' ? '#000000' : '#FFFFFF')};
+`;
+
+const JoinBody = styled.div`
+  min-height: 12px;
+  max-width: 550px;
+  border-radius: 10px;
+  border: 2px solid #000000;
+  color: white;
+  display: flex;
+  align-items: center;
+  margin: 0 1px;
+  padding: 2px 3px;
+  overflow-wrap: break-word;
+  word-break: break-all;
+  justify-content: ${({ who }) => (who === 'me' ? 'flex-end' : 'flex-start')};
+  background-color: ${({ who }) => (who === 'me' ? '#000000' : '#FFFFFF')};
+`;
+
+const JoinText = styled.p`
+  margin: 3px;
+  font-weight: 700;
+  color: ${({ who }) => (who === 'me' ? '#FFFFFF' : '#000000')};
 `;
 
 const MessageSub = styled.div`
@@ -64,8 +123,8 @@ const MessageSub = styled.div`
 `;
 
 const Time = styled.p`
-  margin-top: 5px;
-  margin-right: 5px;
+  margin: ${({ who }) => (who === 'me' ? '12px 0 0 10px' : '0 10px 12px 0')};
+  
 `;
 
 const Author = styled.p`

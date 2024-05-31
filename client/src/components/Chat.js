@@ -67,7 +67,7 @@ function Chat({ socket, username, room }) {
   return (
     <RoomContainer>
       <RoomHeader>
-        <RoomTitle>{room}번 채팅방</RoomTitle>
+        <RoomTitle>{room}</RoomTitle>
       </RoomHeader>
       <RoomBody>
         <MessageBox>
