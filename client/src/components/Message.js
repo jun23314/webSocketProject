@@ -4,45 +4,58 @@ import styled from 'styled-components';
 export const Message = (props) => {
   const messageContent = props.messageContent;
   const username = props.username;
-  const [who, setWho] = useState('me');
+  /*const [who, setWho] = useState('me');
   useEffect(() => {
     username === messageContent.author ? setWho('me') : setWho('other');
-  }, [props]);
-
+  }, [props]);*/
+  const who = username === messageContent.author ? 'me' : 'other';
   return (
     <MessageContainer who={who}>
+       {who === 'me' ? (
+          <>
 
       <div>
 
-      <MessageSub who={who}>
-        <Author who={who}>{messageContent.author}</Author>
-      </MessageSub>
-    
       <ChatBody who={who}>
-        {who === 'me' ? (
-            <>
+        
           <MessageSub who={who}>
-            <Time>{messageContent.time}</Time>
+            <Time who={who}>{messageContent.time}</Time>
           </MessageSub>
       
           <MessageBody who={who}>
             <MessageText who={who}>{messageContent.message}</MessageText>
           </MessageBody>
-          </>
-        ) : (
-          <>
-          <MessageBody who={who}>
-            <MessageText who={who}>{messageContent.message}</MessageText>
-          </MessageBody>
-
-          <MessageSub who={who}>
-            <Time>{messageContent.time}</Time>
-          </MessageSub>
-        </>
-        )}
+         
       </ChatBody>
 
       </div>
+
+        </>
+      ) : (
+        <>
+        
+        <div>
+
+          <MessageSub who={who}>
+            <Author who={who}>{messageContent.author}</Author>
+          </MessageSub>
+
+          <ChatBody who={who}>
+            
+              <MessageBody who={who}>
+                <MessageText who={who}>{messageContent.message}</MessageText>
+              </MessageBody>
+
+              <MessageSub who={who}>
+                <Time who={who}>{messageContent.time}</Time>
+              </MessageSub>
+
+          </ChatBody>
+
+        </div>
+
+          </>
+        )}
 
     </MessageContainer>
   );
@@ -93,7 +106,7 @@ const MessageSub = styled.div`
 `;
 
 const Time = styled.p`
-  margin: ${({ who }) => (who === 'me' ? '12px 0 0 10px' : '0 10px 12px 0')};
+  margin: ${({ who }) => (who === 'me' ? '12px 0 0 10px' : '12px 10px 0 0')};
 `;
 
 const Author = styled.p`
