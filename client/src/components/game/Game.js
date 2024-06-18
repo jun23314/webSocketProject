@@ -9,7 +9,7 @@ import "./Game.css";
 }*/
 async function fetchRandomNumber() {
   try{
-    const response = await fetch('http://localhost:3001/api'); // 서버에서 랜덤 숫자를 가져옴
+    const response = await fetch('http://61.101.176.197:3001/api'); // 서버에서 랜덤 숫자를 가져옴
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
@@ -25,7 +25,7 @@ async function fetchRandomNumber() {
 
 async function postWinner(winner) {
   try{
-    const response = await fetch('http://localhost:3001/winner', {
+    const response = await fetch('http://61.101.176.197:3001/winner', {
       method: 'POST', // POST 메소드 사용
       headers: {
         'Content-Type': 'application/json', // JSON 형식으로 전송
